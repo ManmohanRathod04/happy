@@ -303,7 +303,49 @@ function reveal() {
   // document.querySelector('#video').appendChild(ifrm);
 }
 
+let col=document.querySelector("#slides").style.display = "none";
+
 setTimeout(() => {
-  let col=document.querySelector("#video");
-  col.style.backgroundColor = "Purple";
+  let col=document.querySelector("#slides").style.display = "block";
 }, 12500);
+
+
+let flag=0;
+
+function controller(x){
+    flag=flag+x;
+    slideshow(flag);
+}
+ 
+slideshow(flag);
+
+
+function slideshow(num){
+    let slides=document.getElementsByClassName('slide');
+
+    if(num == slides.length){
+        flag=0;
+        num=0;
+    }
+
+    if(num<0){
+        flag=slides.length-1;
+        num=slides.length-1;
+    }
+    for(let y of slides){
+        y.style.display="none";
+    }
+
+    slides[num].style.display="Block"; 
+}
+
+let sound=document.querySelector(".music").style.display = "none";
+setTimeout(()=>{
+  document.querySelector(".music").style.display = "block";
+},10000);
+
+
+
+
+
+
